@@ -1,5 +1,5 @@
 const form = document.getElementById("new-post-form")
-const baseURL = `https://ultraman-zqor.onrender.com/`
+const baseURL = `https://ultraman-zqor.onrender.com`
 
 const getPosts = async () => {
     const response = await fetch(`${baseURL}/posts`)
