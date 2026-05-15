@@ -8,6 +8,8 @@ const express = require("express")
 
 const app = express()
 
+const PORT = process.env.PORT || 3000
+
 app.use(express.json())
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -35,8 +37,8 @@ async function connectDB() {
 async function startServer() {
     try {
         await connectDB()
-        app.listen(3000, () => {
-            console.log("Server running on port 3000")
+            app.listen(PORT, "0.0.0.0", () => {
+            console.log(`Server running on port ${PORT}`)
         })
     }   catch (error) {
         console.log("Failed to connect.", error)
