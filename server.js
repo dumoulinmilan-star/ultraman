@@ -66,15 +66,17 @@ const db = client.db("microblog");
 const postsCollection = db.collection("posts");
 
 app.post("/posts", async (req,res) => {
-    const post = {
-        body: req.body.body,
-        author: req.body.author,
-        createdAt: new Date()
-    }
-    const result = await postsCollection.insertOne(post);
-    console.log(result);
-    res.send("received")
-})
+  const post = {
+    body: req.body.body,
+    author: req.body.author,
+    createdAt: new Date()
+  };
+
+  const result = await postsCollection.insertOne(post);
+  console.log(result);
+
+  res.json(result);
+});
 
 app.get("/posts", async (req, res) => {
   const posts = await postsCollection.find().toArray();
